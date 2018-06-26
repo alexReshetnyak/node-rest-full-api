@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "joi": "^13.4.0",
     "lion-lib-alexreshetnyak": "^1.0.0",
     "mongoose": "^5.1.6",
     "underscore": "^1.9.1"
