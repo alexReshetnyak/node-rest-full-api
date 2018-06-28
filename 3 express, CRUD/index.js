@@ -29,6 +29,7 @@ app.get('/api/cars/:id', (req, res) => {
   res.send(car);
 });
 
+
 app.post('/api/cars', (req, res) => {
 
   const { error } = validateCar(req.body);
@@ -64,6 +65,7 @@ app.put('/api/cars/:id', (req, res) => {
   res.send(car);
 });
 
+
 app.delete('/api/cars/:id', (req, res) => {
   const car = cars.find(car => car.id === +req.params.id);
   // ! 404 Not found
@@ -77,8 +79,7 @@ app.delete('/api/cars/:id', (req, res) => {
 
 // PORT
 const port = process.env.PORT || 3000; // Get current available PORT
-app.listen(port, () => console.log(`server start on port ${port}...`));
-
+app.listen(port, () => console.log(`server start on port ${port}...`))
 
 
 
@@ -88,3 +89,13 @@ function validateCar(car) {
   };
   return Joi.validate(car, schema);
 }
+
+
+
+
+
+
+
+
+
+
