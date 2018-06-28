@@ -1,5 +1,9 @@
 
 // ! node inspect to start debug
+// ! To set env open terminal and enter export NODE_ENV=production
+// ! To set hidden property use terminal command - export app_password=1234
+
+const config = require('config');
 const express = require('express');
 const Joi = require('joi');
 const app = express();
@@ -9,6 +13,10 @@ const morgan = require('morgan');
 
 // console.log(`NODE_ENV: ${ process.env.NODE_ENV }`); // ! Get current env
 // console.log(`env: ${app.get('env')}`); // ! Get current env (dev by default)
+console.log(`Application name: ${config.get('name')}`);
+console.log(`Mail Server: ${config.get('mail.host')}`); // ! Get property from config file
+console.log(`Password: ${config.get('mail.password')}`); // ! get hide property , To set hidden property use terminal command - export app_password=1234
+
 
 app.use(express.json()); // ! Middleware function to parse JSON
 app.use(express.urlencoded({ extended: true })); // ! Middleware function to parse encoding data from form
