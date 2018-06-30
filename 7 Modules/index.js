@@ -30,7 +30,6 @@ if (app.get('env') === 'development') {
   // startupDebugger('Morgan enabled'); // ! Instead console.log we can use our own logger
 }
 
-
 app.use('/', homeRouter); // ! Use home router module
 app.use('/api/cars', carsRouter); // ! Use cars router module
 
