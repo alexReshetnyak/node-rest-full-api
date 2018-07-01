@@ -1,0 +1,7 @@
+{
+  "name": "My Express App - Development",
+  "dbPath": "mongodb://localhost/playground",
+  "mail": {
+    "host": "dev-mail-server"
+  }
+}
