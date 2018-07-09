@@ -10,33 +10,66 @@ const mongoose = require('mongoose');
 const config = require('config'); // Add Config module
 // console.log('config: ', config.get('dbPath'));
 
-mongoose.connect(config.get('dbPath'))  // ! connect to DB
+mongoose.connect(config.get('dbPath'))  // * connect to DB
   .then(() => console.log('Connected to mongoDB...'))
   .catch(err => console.log('Problem with connect to MongoDb...', err));
 
 const carSchema = new mongoose.Schema({
-  brand: String, // ! Types : String, Number, Date, Buffer, Boolean, ObjectID, Array
-  model: String,
-  colors: [ String ],
+  brand: { 
+    type: String, 
+    required: true,
+    minlength: 3,
+    maxlength: 255,
+   // match: /patern/ // * use pattern to validate specific value
+  }, // ! Types : String, Number, Date, Buffer, Boolean, ObjectID, Array
+  model: {
+    type: String,
+    required: true,
+    enum: ['2106', 'sens', 'lacceti'] // * value shuld be equal on of this values
+  },
+//  colors: [ String ], // * few types 
+  colors: { // * custom validator
+    type: Array,
+    validate: {
+      validator: function (value) {
+        return value.length > 0;
+      },
+      message: 'Car should have at least 1 color'
+    }
+  }, 
   date: { type: Date, default: Date.now },
-  isSold: Boolean
+  isSold: Boolean,
+  price: {
+    type: Number,
+    required: function() { return !this.isSold }, // * required if isSold === false
+    min: 10,
+    max: 1000000
+  }
 });
 
-const Car = mongoose.model('Car', carSchema); // ! Create Car model from Schema
+const Car = mongoose.model('Car', carSchema); // * Create Car model from Schema
 
 //---------------------------------------------POST-------------------------------------------------
 async function createCar() {
   const car = new Car({
-    brand: 'Chevrolet',
-    model: 'Lacetti',
-    colors: ['blue', 'red', 'green'],
-    isSold: false
+    brand: 'VAZ',
+    model: '2106',
+    colors: [],
+    isSold: false,
+    price: 6000
   });
 
-  const result = await car.save();
-  console.log(result, 'result');
+  try {
+    // car.validate(); // * To manualy check valid
+
+    const result = await car.save();
+    console.log(result, 'result');
+  } catch (error) {
+    console.log(error.message);
+  }
 }
-// createCar();
+  // createCar();
+
 //-----------------------------------------GET----------------------------------------
 async function getCars() {
   // ! eq (equal)
@@ -62,16 +95,16 @@ async function getCars() {
     // .or( [{brand: 'Daewoo'}, {model: 'Lacetti'}] ) // find item that have brand 'Daewoo' or model 'Lacetti' Use with .find()
     // .and( [{model: 'Sens'}, {isSold: false}] ) // find item that have two this parameters Use with .find()
    
-    .find({model: /^Sen/ }) // Use regular expression
+    .find({model: /^Sen/ }) // * Use regular expression
     .find({model: /s$/i})
-    .find({model: /.*en.*/i}) // find by match peace of word (match)
+    .find({model: /.*en.*/i}) // * find by match peace of word (match)
    
-    .skip((pageNumber - 1) * pageSize) // Use for pagination, pass offset
+    .skip((pageNumber - 1) * pageSize) // * Use for pagination, pass offset
     .limit(pageSize)
    
-    .sort({brand: 1}) // sort by brand , also cat use -1 to opposite order sort
-    .select({brand: 1, colors: 1}); // Return only brand and colors
-    // .count(); // count number of elements
+    .sort({brand: 1}) // * sort by brand , also cat use -1 to opposite order sort
+    .select({brand: 1, colors: 1}); // * Return only brand and colors
+    // .count(); // * count number of elements
   console.log("Cars: ", cars);
 }
 // getCars();
@@ -89,25 +122,36 @@ async function updateCourse(id) { // First Approach
     isSold: true,
     model: 'sport'
   });
-
-  const result = await car.save();
-  console.log(result, 'result');
+  
+  try {
+    const result = await car.save();
+    console.log(result, 'result');
+  } catch (error) {
+    console.log(error.message); 
+  }
+  
 }
 
 // updateCourse('5b38de481a117c12a8634fb3');
 
 async function updateCourse2(id) { // Second Approach
- //  const result = await Car.update({_id: id}, {
-  const car = await Car.findByIdAndUpdate(id, {
-    $set: {
-      brand: 'Subaru',
-      isSold: true
-    }
-  }, { new: true }); // {new: true} - return updated item
-  console.log(car, 'result');
+  try {
+    //  const result = await Car.update({_id: id}, {
+    const car = await Car.findByIdAndUpdate(id, {
+      $set: {
+        brand: 'Subaru',
+        isSold: true
+      }
+    }, { new: true }); // {new: true} - return updated item
+    console.log(car, 'result');
+
+  } catch (error) {
+    console.log(error.message)
+  }
 }
 
 // updateCourse2('5b38de481a117c12a8634fb3');
+
 
 // ----------------------------DELETE-------------------------------
 
