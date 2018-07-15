@@ -16,7 +16,7 @@ mongoose.connect(config.get('dbPath'))  // * connect to DB
 
 const carSchema = new mongoose.Schema({
   brand: { 
-    type: String, 
+    type: String,
     required: true,
     minlength: 3,
     maxlength: 255,
@@ -25,15 +25,32 @@ const carSchema = new mongoose.Schema({
   model: {
     type: String,
     required: true,
-    enum: ['2106', 'sens', 'lacceti'] // * value shuld be equal on of this values
+    enum: ['2106', 'sens', 'lacceti'], // * value shuld be equal on of this values
+    lowercase: true, // * Automaticly convert value to lowercase
+    // uppercase: true,
+    trim: true // trim text
+
   },
 //  colors: [ String ], // * few types 
-  colors: { // * custom validator
+  // colors: { // * custom validator + Sync validator
+  //   type: Array,
+  //   validate: {
+  //     validator: (value) => {
+  //       return value && value.length > 0;
+  //     },
+  //     message: 'Car should have at least 1 color'
+  //   }
+  // }, 
+  colors: { // * custom validator + Async
     type: Array,
     validate: {
-      validator: function (value) {
-        return value.length > 0;
-      },
+      isAsync: true,
+      validator: (value, callback) => {
+        setTimeout(() => {
+          const result = value && value.length > 0;
+          callback(result);
+        }, 1000);
+      }, 
       message: 'Car should have at least 1 color'
     }
   }, 
@@ -43,7 +60,9 @@ const carSchema = new mongoose.Schema({
     type: Number,
     required: function() { return !this.isSold }, // * required if isSold === false
     min: 10,
-    max: 1000000
+    max: 1000000,
+    get: value => Math.round(value), // * when we get value from DB apply function
+    set: value => Math.round(value), // * setter
   }
 });
 
@@ -54,7 +73,7 @@ async function createCar() {
   const car = new Car({
     brand: 'VAZ',
     model: '2106',
-    colors: [],
+    colors: ['red', 'green', 'blue'],
     isSold: false,
     price: 6000
   });
@@ -65,10 +84,14 @@ async function createCar() {
     const result = await car.save();
     console.log(result, 'result');
   } catch (error) {
-    console.log(error.message);
+    for (const field in error.errors) {
+      if (error.errors.hasOwnProperty(field)) {
+        console.log('Error...', error.errors[field].message);
+      }
+    }
   }
 }
-  // createCar();
+// createCar();
 
 //-----------------------------------------GET----------------------------------------
 async function getCars() {
