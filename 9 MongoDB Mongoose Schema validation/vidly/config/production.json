@@ -1,0 +1,7 @@
+{
+  "name": "My Express App - Production",
+  "dbPath": "mongodb://localhost/vidly",
+  "mail": {
+    "host": "prod-mail-server"
+  }
+}
