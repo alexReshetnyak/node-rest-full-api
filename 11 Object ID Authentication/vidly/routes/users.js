@@ -4,6 +4,7 @@ const _ = require('lodash');
 const bcrypt = require('bcrypt'); // * for hash password
 
 const User = require('../models/user');
+const auth = require('../middleware/auth');
 
 
 router.get('/', async (req, res) => {
@@ -11,7 +12,12 @@ router.get('/', async (req, res) => {
 	res.send(users);
 });
 
-router.post('/', async (req, res) => {
+router.get('/me', auth, async (req, res) => {
+	const user = await User.findById(req.user._id).select('-password'); //* exclude password
+	res.send({data: user});
+});
+
+router.post('/', auth, async (req, res) => {
 	const { error } = User.validateUser(req.body); 
 	if (error) { return res.status(400).send(error.details[0].message); }
 
