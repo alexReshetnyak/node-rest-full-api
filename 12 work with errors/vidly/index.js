@@ -1,5 +1,6 @@
 // ! to set jwtPrivateKey use this command - export vidly_jwtPrivateKey=password
-
+require('express-async-errors'); // * package instead asyncMiddleWare 
+const winston = require('winston'); // * lib Logger send messages to console, file or http
 const express = require('express');
 const mongoose = require('mongoose');
 const config = require('config');
@@ -17,11 +18,14 @@ const catchError = require('./middleware/error');
 
 const app = express();
 
+winston.add(
+	new winston.transports.File({filename: 'logfile.log'})
+); // * save logs to file
+
 if (!config.get('jwtPrivateKey')) {
 	console.error('FATAL ERROR: JwtPrivateKey is not defined');
 	process.exit(1); // ! exit from process, 0 - success, 1 or something else - fail 
 }
-
 
 mongoose.connect(config.get('dbPath'))  // * connect to DB
 	.then(() => console.log('Connected to mongoDB...'))
