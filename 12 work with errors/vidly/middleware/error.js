@@ -1,7 +1,7 @@
 
 const winston = require('winston');
 
-module.exports = function (err, req, res, next) { // * handle errors
+module.exports = function (err, req, res, next) { // * handle errors inside express
 	//* log levels: 
 	//* error
 	//* warn

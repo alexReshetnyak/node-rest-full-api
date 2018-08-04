@@ -1,45 +1,19 @@
 // ! to set jwtPrivateKey use this command - export vidly_jwtPrivateKey=password
-require('express-async-errors'); // * package instead asyncMiddleWare 
-const winston = require('winston'); // * lib Logger send messages to console, file or http
 const express = require('express');
-const mongoose = require('mongoose');
-const config = require('config');
-const Joi = require('joi');
-Joi.objectId = require('joi-objectid')(Joi); // * package for validate Object Id
-
-const genres = require('./routes/genres');
-const customers = require('./routes/customers');
-const films = require('./routes/films');
-const rentals = require('./routes/rentals');
-const users = require('./routes/users');
-const auth = require('./routes/auth');
-
-const catchError = require('./middleware/error');
-
 const app = express();
+const winston = require('winston');
 
-winston.add(
-	new winston.transports.File({filename: 'logfile.log'})
-); // * save logs to file
+require('./startup/logging')(); // start winston
+require('./startup/database')(); // start connection to mongoDb
+require('./startup/routes')(app, express); // use routes
+require('./startup/config')(); // use config options
+require('./startup/validation')(); // use joi validation
 
-if (!config.get('jwtPrivateKey')) {
-	console.error('FATAL ERROR: JwtPrivateKey is not defined');
-	process.exit(1); // ! exit from process, 0 - success, 1 or something else - fail 
-}
 
-mongoose.connect(config.get('dbPath'))  // * connect to DB
-	.then(() => console.log('Connected to mongoDB...'))
-	.catch(err => console.log('Problem with connect to MongoDb...', err));
+// throw new Error('some err');
 
-app.use(express.json());
-app.use('/api/genres', genres);
-app.use('/api/customers', customers);
-app.use('/api/films', films);
-app.use('/api/rentals', rentals);
-app.use('/api/users', users);
-app.use('/api/auth', auth);
-
-app.use(catchError);
+// const p = Promise.reject(new Error('Async Error happened'));
+// p.then(() => console.log('Done'));
 
 const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`Listening on port ${port}...`));
+app.listen(port, () => winston.info(`Listening on port ${port}...`));

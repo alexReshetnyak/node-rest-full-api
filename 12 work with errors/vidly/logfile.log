@@ -1,1 +1,53 @@
 {"level":"error","message":"could not get genres"}
+{"level":"error","message":"could not get genres"}
+{"level":"error","message":"some err"}
+{"level":"error","message":"Async Error happened"}
+{"level":"error","message":"Async Error happened"}
+{"message":"Connected to mongoDB...","level":"info"}
+{"message":"Connected to mongoDB...","level":"info"}
+{"name":"MongoNetworkError","message":"failed to connect to server [localhost:27017] on first connect [MongoNetworkError: connect ECONNREFUSED 127.0.0.1:27017]","level":"error"}
+{"message":"Connected to mongoDB...","level":"info"}
+{"message":"Connected to mongoDB...","level":"info"}
+{"message":"Connected to mongoDB...","level":"info"}
+{"message":"Connected to mongoDB...","level":"info"}
+{"message":"Connected to mongoDB...","level":"info"}
+{"message":"Connected to mongoDB...","level":"info"}
+{"message":"Connected to mongoDB...","level":"info"}
+{"message":"Connected to mongoDB...","level":"info"}
+{"message":"Connected to mongoDB...","level":"info"}
+{"message":"Connected to mongoDB...","level":"info"}
+{"message":"Connected to mongoDB...","level":"info"}
+{"message":"Connected to mongoDB...","level":"info"}
+{"message":"Connected to mongoDB...","level":"info"}
+{"message":"Connected to mongoDB...","level":"info"}
+{"message":"Connected to mongoDB...","level":"info"}
+{"message":"Connected to mongoDB...","level":"info"}
+{"message":"Connected to mongoDB...","level":"info"}
+{"message":"Connected to mongoDB...","level":"info"}
+{"message":"Connected to mongoDB...","level":"info"}
+{"message":"Connected to mongoDB...","level":"info"}
+{"message":"Connected to mongoDB...","level":"info"}
+{"message":"Listening on port 3000...","level":"info"}
+{"message":"Connected to mongoDB...","level":"info"}
+{"message":"Listening on port 3000...","level":"info"}
+{"message":"Connected to mongoDB...","level":"info"}
+{"message":"Listening on port 3000...","level":"info"}
+{"message":"Connected to mongoDB...","level":"info"}
+{"message":"Listening on port 3000...","level":"info"}
+{"message":"Connected to mongoDB...","level":"info"}
+{"message":"Listening on port 3000...","level":"info"}
+{"message":"Connected to mongoDB...","level":"info"}
+{"message":"Listening on port 3000...","level":"info"}
+{"message":"Connected to mongoDB...","level":"info"}
+{"message":"Listening on port 3000...","level":"info"}
+{"message":"Connected to mongoDB...","level":"info"}
+{"message":"Listening on port 3000...","level":"info"}
+{"message":"Connected to mongoDB...","level":"info"}
+{"message":"Listening on port 3000...","level":"info"}
+{"message":"Connected to mongoDB...","level":"info"}
+{"message":"Listening on port 3000...","level":"info"}
+{"message":"Connected to mongoDB...","level":"info"}
+{"message":"Listening on port 3000...","level":"info"}
+{"message":"Connected to mongoDB...","level":"info"}
+{"message":"Listening on port 3000...","level":"info"}
+{"message":"Connected to mongoDB...","level":"info"}
