@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --watchAll",
     "start": "nodemon index.js"
   },
   "author": "",
@@ -31,6 +31,8 @@
     "winston-mongodb": "^4.0.0-rc1"
   },
   "devDependencies": {
+    "eslint-plugin-jest": "^21.18.0",
+    "jest": "^23.4.2",
     "jshint": "^2.9.5"
   }
 }
