@@ -12,8 +12,8 @@ require('./startup/validation')(); // use joi validation
 
 // throw new Error('some err');
 
-const p = Promise.reject(new Error('Async Error happened'));
-p.then(() => console.log('Done'));
+// const p = Promise.reject(new Error('Async Error happened'));
+// p.then(() => console.log('Done'));
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => winston.info(`Listening on port ${port}...`));

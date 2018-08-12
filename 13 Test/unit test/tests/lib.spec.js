@@ -3,6 +3,11 @@ const { greet } = require('../lib');
 const { getCurrencies } = require('../lib');
 const { getProduct } = require('../lib');
 const { registerUser } = require('../lib');
+const { applyDiscount } = require('../lib');
+const { notifyCustomer } = require('../lib');
+
+const db = require('../db');
+const mail = require('../mail');
 
 describe('absolute', () =>{
 	it('should return a positive number if input is negative', () => {
@@ -61,5 +66,41 @@ describe('registerUser', () =>{
 		const result = registerUser('Alex');
 		expect(result).toMatchObject({username: 'Alex'});
 		expect(result.id).toBeGreaterThan(0);
+	});
+});
+
+describe('applyDiscount', () => {
+	it('should apply discount if customer has more than 10 points', () => {
+		db.getCustomerSync = function(customerId) { // fake function 
+			console.log('Fake reading customer');
+			return { id: customerId, points: 20 };
+		};
+
+		const order = { customerId: 1, totalPrice: 10 };
+		applyDiscount(order);
+
+		expect(order.totalPrice).toBe(9);
+	});
+});
+
+
+describe('notifyCustomer', () => {
+	it('should send email to customer', () => {
+		// const mockFunction = jest.fn();
+		// mockFunction.mockReturnValue(1);
+		// mockFunction.mockResolvedValue(1); // async mock function
+		// mockFunction.mockRejectedValue(new Error('...'));
+		// const result = await mockFunction();
+
+		db.getCustomerSync = jest.fn().mockReturnValue({email: 'a'});
+		mail.send = jest.fn();
+
+		notifyCustomer({ customerId: 1 });
+
+		expect(mail.send).toHaveBeenCalled();
+		console.log('CALLS:', mail.send.mock.calls);
+		
+		expect(mail.send.mock.calls[0][0]).toBe('a');
+		expect(mail.send.mock.calls[0][1]).toMatch(/order/);
 	});
 });

@@ -19,7 +19,7 @@ module.exports = function () {
 
 
 	process.on('uncaughtException', (ex) => { // * catch sync errors
-		winston.error('some error');
+		winston.error(ex.message, ex);
 		process.exit(1);
 	});
 
