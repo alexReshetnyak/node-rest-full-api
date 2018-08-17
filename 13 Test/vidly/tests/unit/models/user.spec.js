@@ -12,7 +12,6 @@ describe('user.generateAuthToken', () => {
 		const user = new User(payload);
 		
 		const token = user.generateAuthToken();
-		console.log('TOKEN: ', token);
 		
 		const decoded = jwt.verify(token, config.get('jwtPrivateKey'));
 
