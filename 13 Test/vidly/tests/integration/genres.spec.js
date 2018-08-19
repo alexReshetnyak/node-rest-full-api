@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 
 const { Genre } = require('../../models/genre');
 const User = require('../../models/user');
-let server;
+let server = null;
+
 
 describe('/api/genres', () => {
 

@@ -1,46 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1534681482303" clover="3.2.0">
-  <project timestamp="1534681482303" name="All files">
-    <metrics statements="27" coveredstatements="18" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1" elements="29" coveredelements="19" complexity="0" loc="27" ncloc="27" packages="2" files="2" classes="2">
-      <package name="routes">
-        <metrics statements="9" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <file name="returns.js" path="/home/alex/Desktop/CODE/NODE/23 -/13 Test/vidly/routes/returns.js">
-          <metrics statements="9" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-          <line num="2" count="0" type="stmt"/>
-          <line num="3" count="0" type="stmt"/>
-          <line num="6" count="0" type="stmt"/>
-          <line num="7" count="0" type="stmt"/>
-          <line num="8" count="0" type="stmt"/>
-          <line num="9" count="0" type="stmt"/>
-          <line num="11" count="0" type="stmt"/>
-          <line num="45" count="0" type="stmt"/>
-          <line num="48" count="0" type="stmt"/>
-        </file>
-      </package>
-      <package name="startup">
-        <metrics statements="18" coveredstatements="18" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <file name="routes.js" path="/home/alex/Desktop/CODE/NODE/23 -/13 Test/vidly/startup/routes.js">
-          <metrics statements="18" coveredstatements="18" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-          <line num="2" count="3" type="stmt"/>
-          <line num="3" count="3" type="stmt"/>
-          <line num="4" count="3" type="stmt"/>
-          <line num="5" count="3" type="stmt"/>
-          <line num="6" count="3" type="stmt"/>
-          <line num="7" count="3" type="stmt"/>
-          <line num="8" count="3" type="stmt"/>
-          <line num="10" count="3" type="stmt"/>
-          <line num="12" count="3" type="stmt"/>
-          <line num="13" count="3" type="stmt"/>
-          <line num="14" count="3" type="stmt"/>
-          <line num="15" count="3" type="stmt"/>
-          <line num="16" count="3" type="stmt"/>
-          <line num="17" count="3" type="stmt"/>
-          <line num="18" count="3" type="stmt"/>
-          <line num="19" count="3" type="stmt"/>
-          <line num="20" count="3" type="stmt"/>
-          <line num="22" count="3" type="stmt"/>
-        </file>
-      </package>
+<coverage generated="1534689941386" clover="3.2.0">
+  <project timestamp="1534689941386" name="All files">
+    <metrics statements="26" coveredstatements="0" conditionals="10" coveredconditionals="0" methods="2" coveredmethods="0" elements="38" coveredelements="0" complexity="0" loc="26" ncloc="26" packages="1" files="1" classes="1">
+      <file name="returns.js" path="/home/alex/Desktop/CODE/NODE/23 -/13 Test/vidly/routes/returns.js">
+        <metrics statements="26" coveredstatements="0" conditionals="10" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="21" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="27" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="28" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+      </file>
     </metrics>
   </project>
 </coverage>

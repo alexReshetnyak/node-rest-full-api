@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Joi = require('joi');
+const moment = require('moment');
 
 const rentalSchema = new mongoose.Schema({
 	customer: {
@@ -55,6 +56,21 @@ const rentalSchema = new mongoose.Schema({
 	}
 });
 
+rentalSchema.statics.lookup = function(customerId, filmId) {
+	return this.findOne({
+		'customer._id': customerId,
+		'film._id': filmId
+	});
+};
+
+
+rentalSchema.methods.return = function() {
+	this.dateReturned = new Date();
+	
+	const rentalDays = moment().diff(this.dateOut, 'days');
+	this.rentalFee = rentalDays * this.film.dailyRentalRate;
+};
+
 const Rental = mongoose.model(
 	'Rental',
 	rentalSchema
@@ -69,4 +85,3 @@ Rental.validateRental = function(rental) {
 };
 
 module.exports = Rental;
-// module.exports = rentalSchema;

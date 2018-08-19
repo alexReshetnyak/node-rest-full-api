@@ -8,6 +8,7 @@ require('./startup/database')(); // start connection to mongoDb
 require('./startup/routes')(app, express); // use routes
 require('./startup/config')(); // use config options
 require('./startup/validation')(); // use joi validation
+require('./startup/prod')(app); // start helmet and compression
 
 
 // throw new Error('some err');
