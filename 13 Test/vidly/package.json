@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watch --verbose"
+    "test": "export vidly_jwtSecretKey=password && jest --watch --verbose --coverage"
   },
   "keywords": [],
   "author": "",

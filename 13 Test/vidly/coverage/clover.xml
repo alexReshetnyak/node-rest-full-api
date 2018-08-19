@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1534668935363" clover="3.2.0">
+  <project timestamp="1534668935363" name="All files">
+    <metrics statements="45" coveredstatements="35" conditionals="2" coveredconditionals="2" methods="7" coveredmethods="4" elements="54" coveredelements="41" complexity="0" loc="45" ncloc="45" packages="3" files="4" classes="4">
+      <package name="middleware">
+        <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <file name="validateObjectId.js" path="/home/alex/Desktop/CODE/NODE/23 -/13 Test/vidly/middleware/validateObjectId.js">
+          <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+          <line num="2" count="1" type="stmt"/>
+          <line num="4" count="1" type="stmt"/>
+          <line num="5" count="2" type="cond" truecount="2" falsecount="0"/>
+          <line num="6" count="1" type="stmt"/>
+          <line num="9" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="models">
+        <metrics statements="21" coveredstatements="19" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
+        <file name="genre.js" path="/home/alex/Desktop/CODE/NODE/23 -/13 Test/vidly/models/genre.js">
+          <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+          <line num="1" count="2" type="stmt"/>
+          <line num="2" count="2" type="stmt"/>
+          <line num="4" count="2" type="stmt"/>
+          <line num="13" count="2" type="stmt"/>
+          <line num="18" count="2" type="stmt"/>
+          <line num="19" count="4" type="stmt"/>
+          <line num="23" count="4" type="stmt"/>
+          <line num="26" count="2" type="stmt"/>
+          <line num="27" count="2" type="stmt"/>
+        </file>
+        <file name="user.js" path="/home/alex/Desktop/CODE/NODE/23 -/13 Test/vidly/models/user.js">
+          <metrics statements="12" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+          <line num="1" count="4" type="stmt"/>
+          <line num="2" count="4" type="stmt"/>
+          <line num="3" count="4" type="stmt"/>
+          <line num="4" count="4" type="stmt"/>
+          <line num="6" count="4" type="stmt"/>
+          <line num="30" count="4" type="stmt"/>
+          <line num="31" count="9" type="stmt"/>
+          <line num="34" count="4" type="stmt"/>
+          <line num="36" count="4" type="stmt"/>
+          <line num="37" count="0" type="stmt"/>
+          <line num="43" count="0" type="stmt"/>
+          <line num="46" count="4" type="stmt"/>
+        </file>
+      </package>
+      <package name="startup">
+        <metrics statements="19" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
+        <file name="logging.js" path="/home/alex/Desktop/CODE/NODE/23 -/13 Test/vidly/startup/logging.js">
+          <metrics statements="19" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
+          <line num="2" count="1" type="stmt"/>
+          <line num="3" count="1" type="stmt"/>
+          <line num="4" count="1" type="stmt"/>
+          <line num="6" count="1" type="stmt"/>
+          <line num="8" count="1" type="stmt"/>
+          <line num="21" count="1" type="stmt"/>
+          <line num="22" count="0" type="stmt"/>
+          <line num="23" count="0" type="stmt"/>
+          <line num="24" count="0" type="stmt"/>
+          <line num="26" count="0" type="stmt"/>
+          <line num="29" count="1" type="stmt"/>
+          <line num="30" count="0" type="stmt"/>
+          <line num="31" count="0" type="stmt"/>
+          <line num="33" count="0" type="stmt"/>
+          <line num="34" count="0" type="stmt"/>
+          <line num="37" count="1" type="stmt"/>
+          <line num="43" count="1" type="stmt"/>
+          <line num="47" count="1" type="stmt"/>
+          <line num="51" count="1" type="stmt"/>
+        </file>
+      </package>
+    </metrics>
+  </project>
+</coverage>

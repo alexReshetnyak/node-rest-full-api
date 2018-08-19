@@ -35,9 +35,9 @@ const User = mongoose.model('User', userSchema);
 
 User.validateUser = function (user) {
 	const schema = {
-		name: Joi.string().min(0).max(50).required(),
+		name: Joi.string().min(5).max(50).required(),
 		password: Joi.string().min(5).max(255).required(), //* joy-password-complexity - npm for more complicated password 
-		email: Joi.string().min(0).max(255)
+		email: Joi.string().min(5).max(255)
 	};
 
 	return Joi.validate(user, schema);

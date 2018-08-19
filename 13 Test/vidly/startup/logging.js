@@ -21,12 +21,16 @@ module.exports = function () {
 	process.on('uncaughtException', (ex) => { // * catch sync errors
 		winston.error(ex.message, ex);
 		logger.error(ex.message, ex);
+		console.log(ex.message);
+		
 		process.exit(1);
 	});
 
 	process.on('unhandledRejection', (ex) => { // * catch async errors
 		logger.error(ex.message, ex);
 		winston.error(ex.message, ex);
+
+		console.log(ex.message);
 		process.exit(1);
 	});
 
