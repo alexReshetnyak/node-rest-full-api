@@ -5,11 +5,11 @@ const { Genre } = require('../../models/genre');
 
 describe('auth middleware', () => {
 
-	// beforeEach(() => server = require('../../index'));
-	// afterEach(async () => {
-	// 	await Genre.remove({});
-	// 	server.close(); 
-	// });
+	beforeEach(() => server = require('../../index'));
+	afterEach(async () => {
+		await Genre.remove({});
+		await server.close(); 
+	});
 
 	let token;
 
@@ -25,22 +25,22 @@ describe('auth middleware', () => {
 	});
 
 	it('should return 401 if no token no provided', async () => {
-		// token = '';
+		token = '';
 
-		// const res = await exec();
-		// expect(res.status).toBe(401);
-		expect(true).toBe(true); // * because app.server.listen error
+		const res = await exec();
+		expect(res.status).toBe(401);
+		// expect(true).toBe(true); // * because app.server.listen error
 	});
 
 	it('should return 400 if no token invalid', async () => {
-		// token = 'a';
+		token = 'a';
 
-		// const res = await exec();
-		// expect(res.status).toBe(400);
+		const res = await exec();
+		expect(res.status).toBe(400);
 	});
 
-	// it('should return 200 if no token is valid', async () => {
-	// 	const res = await exec();
-	// 	expect(res.status).toBe(200);
-	// });
+	it('should return 200 if no token is valid', async () => {
+		const res = await exec();
+		expect(res.status).toBe(200);
+	});
 });

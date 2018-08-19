@@ -10,7 +10,7 @@ describe('/api/genres', () => {
 	beforeEach(() => server = require('../../index'));
 	afterEach(async () => {
 		await Genre.remove({}); // * remove all from genre collection
-		server.close();
+		await server.close();
 	});
 
 	// * --------------------------------------- GET -------------------------------------------
