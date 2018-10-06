@@ -18,7 +18,7 @@ router.get('/me', auth, asyncMiddleWare(async (req, res) => {
 	res.send({data: user});
 }));
 
-router.post('/', auth, asyncMiddleWare(async (req, res) => {
+router.post('/', asyncMiddleWare(async (req, res) => {
 	const { error } = User.validateUser(req.body); 
 	if (error) { return res.status(400).send(error.details[0].message); }
 

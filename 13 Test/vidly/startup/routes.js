@@ -13,7 +13,7 @@ module.exports = function(app, express) {
 	app.use(express.json());
 	app.use('/api/genres', genres);
 	app.use('/api/customers', customers);
-	app.use('/api/films', films);
+	app.use('/api/movies', films);
 	app.use('/api/rentals', rentals);
 	app.use('/api/users', users);
 	app.use('/api/auth', auth);
