@@ -4,6 +4,7 @@ const router = express.Router();
 const { Genre } = require('../models/genre');
 const Film = require('../models/film');
 const auth = require('../middleware/auth');
+const admin = require('../middleware/admin');
 const asyncMiddleWare = require('../middleware/async');
 
 router.get('/', asyncMiddleWare(async (req, res) => {
@@ -40,7 +41,7 @@ router.put('/:id', auth, asyncMiddleWare(async (req, res) => {
 	res.send(film);
 }));
 
-router.delete('/:id', auth, asyncMiddleWare(async (req, res) => {
+router.delete('/:id', [auth, admin], asyncMiddleWare(async (req, res) => {
 	const film = await Film.findByIdAndRemove(req.params.id);
 	if (!film) return res.status(404).send('The film with the given ID was not found.');
 	res.send(film);
